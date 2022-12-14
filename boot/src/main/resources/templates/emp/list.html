@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.backYellow{
+background-color:Yellow;
+}
+</style>
+</head>
+<body>
+조회수: [[${#lists.size(emps)}]]
+<table>
+ <tr>
+ <th>no</th>
+ <th>employee_id</th>
+ <th>first_name</th>
+ <th>last_name</th>
+ <th>hire_date</th>
+ </tr>
+<tr th:each="emp, st : ${emps}" th:class="${st.odd}? backYellow :_">
+ <td th:text="${st.count}">1</td>
+ <td th:text="${emp.employeeId}"></td>
+ <td th:text="${emp.firstName}"></td>
+ <td th:text="${emp.lastName}"></td>
+ <td th:text="${#dates.format(emp.hireDate,'yyyy-MM-dd')}"	></td>
+ </tr>
+</table>
+</body>
+</html>
